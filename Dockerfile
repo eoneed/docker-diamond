@@ -17,17 +17,21 @@ ENV HANDLERS=diamond.handler.stats_d.StatsdHandler \
     STATSD_HOST=127.0.0.1 \
     STATSD_PORT=8125 \
     INTERVAL=10 \
-    DIAMOND_CONF=/etc/diamond/diamond.conf
+    DIAMOND_CONF=/etc/diamond/diamond.conf \
+    COLLECTORS_CONF_DIR=/etc/diamond/collectors/ \
+    COLLECTORS_DIR=/usr/local/share/diamond/collectors/ \
+    HANDLERS_CONF_DIR=/etc/diamond/handlers/ \
+    HANDLERS_DIR=/usr/local/share/diamond/handlers/
 
 COPY diamond.conf $DIAMOND_CONF
 COPY entrypoint.py /entrypoint.py
 
 RUN adduser -S diamond \
     && mkdir -p \
-        /usr/local/share/diamond/collectors \
-        /usr/local/share/diamond/handlers \
-        /etc/diamond/collectors \
-        /etc/diamond/handlers \
+        $COLLECTORS_DIR \
+        $HANDLERS_DIR \
+        $COLLECTORS_CONF_DIR \
+        $HANDLERS_CONF_DIR \
     && chown -R diamond /usr/local/share/diamond /etc/diamond
 
 

@@ -22,7 +22,7 @@ DIAMOND_CONF           path to diamond config, defaults to /etc/diamond/diamond.
 COLLECTORS_CONF_DIR    path to diamond collectors config dir, defaults to /etc/diamond/collectors.
 COLLECTORS_DIR         path to additional diamond collectors, defaults to /use/local/share/diamond/collectors.
 HANDLERS_CONF_DIR      path to diamond handlers config dir, defaults to /etc/diamond/handlers.
-COLLECTORS_DIR         path to additional diamond handlers, defaults to /use/local/share/diamond/handlers.
+HANDLERS_DIR         path to additional diamond handlers, defaults to /use/local/share/diamond/handlers.
 ```
 
 For more sophisticated cases you can copy your own diamond config:
@@ -47,3 +47,7 @@ COPY CPUCollector.conf $COLLECTORS_CONF_DIR
 ```
 
 Same applies to additional collectors/handlers as `.py` files.
+```
+COPY <myrabbitcollector>.py $COLLECTORS_DIR/rabbitmq/
+COPY fancy.py $COLLECTORS_DIR/fancy/
+```
