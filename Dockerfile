@@ -17,6 +17,7 @@ ENV HANDLERS=diamond.handler.stats_d.StatsdHandler \
     STATSD_HOST=127.0.0.1 \
     STATSD_PORT=8125 \
     INTERVAL=10 \
+    PATH_PREFIX=''\
     DIAMOND_CONF=/etc/diamond/diamond.conf \
     COLLECTORS_CONF_DIR=/etc/diamond/collectors/ \
     COLLECTORS_DIR=/usr/local/share/diamond/collectors/ \

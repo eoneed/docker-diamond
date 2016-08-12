@@ -17,7 +17,8 @@ GRAPHITE_HOST          address of your graphite instance, defaults to 127.0.0.1.
 GRAPHITE_PORT          port on which your graphite listens on, default to 2003.
 STATSD_HOST            address of your StatsD daemon, defaults to 127.0.0.1.
 STATSD_PORT            port on which StatsD listens on, default to 8125.
-INTERVAL               the interval at which you wish to send metrics, default 10.
+INTERVAL               the interval at which you wish to send metrics, defaults to 10.
+PATH_PREFIX            prefix to all metrics processed by Diamond, defaults to ''
 DIAMOND_CONF           path to diamond config, defaults to /etc/diamond/diamond.conf.
 COLLECTORS_CONF_DIR    path to diamond collectors config dir, defaults to /etc/diamond/collectors.
 COLLECTORS_DIR         path to additional diamond collectors, defaults to /use/local/share/diamond/collectors.
