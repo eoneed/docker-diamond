@@ -1,15 +1,38 @@
 #!/usr/bin/env python
 
-from os import environ
+import logging
+from glob import glob
+from os import environ, path
 from subprocess import call
 from sys import argv
 
-with open(environ['DIAMOND_CONF'], 'r+') as f:
-    content = f.read()
-    content = content.format(**environ)
-    f.seek(0)
-    f.truncate()
-    f.write(content)
+logging.basicConfig(level=logging.INFO)
+
+
+def format_with_environment(path):
+    """
+    Open file and format its content with environment variables.
+    :param path: path to file which should be formatted
+    """
+    with open(path, 'r+') as f:
+        content = f.read()
+        content = content.format(**environ)
+        f.seek(0)
+        f.truncate()
+        f.write(content)
+
+configs = [environ['DIAMOND_CONF']]
+
+for configs_dir in [environ['COLLECTORS_CONF_DIR'],
+                    environ['HANDLERS_CONF_DIR']]:
+    configs.extend(config for config in glob(path.join(configs_dir, '*'))
+                   if config.endswith('.conf'))
+
+
+logging.info('Formatting %s with environments', ', '.join(configs))
+
+for config in configs:
+    format_with_environment(config)
 
 exit(call(['diamond', '-f', '--skip-pidfile', '-c', environ['DIAMOND_CONF']] +
           argv[1:]))

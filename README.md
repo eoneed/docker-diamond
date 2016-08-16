@@ -1,6 +1,6 @@
 # docker-diamond
 
-Minimal image based on python:2.7.12-alpine with Diamond daemon running.
+Minimal image based on `python:2.7.12-alpine` with Diamond daemon running.
 It is designed to collect metric from other containers over network.
 
 ## Base usage ##
@@ -31,9 +31,10 @@ For more sophisticated cases you can copy your own diamond config:
 COPY diamond.conf $DIAMOND_CONF
 ```
 
-Config file is formated by image's entrypoint with environment as keys,
-so you can dynamically change it's contents by using environment
-variables in braces, e.g:
+Config files (`diamond.conf` and everything in `$COLLECTORS_CONF_DIR`
+and `HANDLERS_CONF_DIR`) is formated by image's entrypoint 
+with environment as keys, so you can dynamically change it's contents by
+using environment variables in braces, e.g:
 ```
 [server]
 
