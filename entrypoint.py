@@ -25,8 +25,7 @@ configs = [environ['DIAMOND_CONF']]
 
 for configs_dir in [environ['COLLECTORS_CONF_DIR'],
                     environ['HANDLERS_CONF_DIR']]:
-    configs.extend(config for config in glob(path.join(configs_dir, '*'))
-                   if config.endswith('.conf'))
+    configs += glob(path.join(configs_dir, '*.conf'))
 
 
 logging.info('Formatting %s with environments', ', '.join(configs))
