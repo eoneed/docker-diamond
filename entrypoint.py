@@ -14,12 +14,13 @@ def format_with_environment(path):
     Open file and format its content with environment variables.
     :param path: path to file which should be formatted
     """
-    with open(path, 'r+') as f:
+    with open(path, 'r') as f:
         content = f.read()
-        content = content.format(**environ)
-        f.seek(0)
-        f.truncate()
-        f.write(content)
+        new_content = content.format(**environ)
+
+    if content != new_content:
+        with open(path, 'w+') as f:
+            f.write(new_content)
 
 configs = [environ['DIAMOND_CONF']]
 
