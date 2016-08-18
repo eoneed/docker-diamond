@@ -42,6 +42,17 @@ using environment variables in braces, e.g:
 handlers = {HANDLERS}
 ```
 
+For enabling collectors just copy their configuration files:
+```
+COPY CPUCollector.conf $COLLECTORS_CONF_DIR
+```
+
+Same applies to additional collectors/handlers as `.py` files.
+```
+COPY <myrabbitcollector>.py $COLLECTORS_DIR/rabbitmq/
+COPY fancy.py $COLLECTORS_DIR/fancy/
+```
+
 If you want use environment variables in your custom configuration files
 due to limitations in `COPY` directive which does not respect `USER`
 directive, you must use following pattern.
@@ -53,14 +64,3 @@ RUN chown -R diamond $COLLECTORS_CONF_DIR
 USER diamond
 ```
 or simply run `diamond` as a root user.
-
-For enabling collectors just copy their configuration files:
-```
-COPY CPUCollector.conf $COLLECTORS_CONF_DIR
-```
-
-Same applies to additional collectors/handlers as `.py` files.
-```
-COPY <myrabbitcollector>.py $COLLECTORS_DIR/rabbitmq/
-COPY fancy.py $COLLECTORS_DIR/fancy/
-```
