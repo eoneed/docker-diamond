@@ -1,5 +1,5 @@
 # docker-diamond
-[![](https://images.microbadger.com/badges/version/mateuszm/diamond.svg)](http://microbadger.com/images/mateuszm/diamond"") [![](https://images.microbadger.com/badges/image/mateuszm/diamond.svg)](https://microbadger.com/images/mateuszm/diamond"")
+[![](https://images.microbadger.com/badges/version/mateuszm/diamond.svg)](http://microbadger.com/images/mateuszm/diamond) [![](https://images.microbadger.com/badges/image/mateuszm/diamond.svg)](https://microbadger.com/images/mateuszm/diamond)
 
 Minimal image based on `python:2.7.12-alpine` with Diamond daemon running.
 It is designed to collect metric from other containers over network.
